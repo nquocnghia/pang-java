@@ -1,4 +1,4 @@
-package me.foly.si.misc;
+package me.foly.si.core.misc;
 
 public class Position {
     private int x;
