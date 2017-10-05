@@ -1,0 +1,106 @@
+@startuml
+
+namespace me.foly.si.core {
+    interface IShip {
+        + void tick()
+        + void draw(IDrawer)
+        + ShipView getView()
+        + ShipModel getModel()
+        + int getLeft()
+        + int getRight()
+        + int getTop()
+        + int getBottom()
+        + int getWidth()
+        + int getHeight()
+        + int getCenterX()
+        + int getCenterY()
+    }
+
+    abstract class Ship {
+        + {abstract} void tick()
+    }
+    IShip <|-- Ship
+
+    class ShipView {
+        + void draw(IDrawer)
+    }
+    class ShipModel
+    ShipView <-- Ship
+    ShipModel <-- Ship
+    ShipView --> ShipModel
+
+    class Position {
+        - int x
+        - int y
+    }
+
+    class Size {
+        - int width
+        - int height
+    }
+
+    Size <--* ShipModel
+    Position <--* ShipModel
+
+    class Player {
+        + void tick()
+        + void move(InputKey)
+        + void stop(InputKey)
+    }
+    Ship <|-- Player
+
+    interface IDrawer {
+        + void background(float, float, float)
+        + void rect(int, int, int, int)
+        + void image(String, int, int, int, int)
+    }
+    IDrawer <.. IShip
+
+    interface IScene {
+        + void tick(Game)
+        + void draw(IDrawer)
+        + void keyPressed(InputKey, Game)
+        + void keyReleased(InputKey, Game)
+    }
+
+    class StageScene
+    IScene <|-- StageScene
+    IShip "*" <- StageScene
+    Player <-- StageScene
+
+    class Game {
+        + Game(IDrawer)
+        + void tick()
+        + void draw()
+        + void keyPressed(InputKey)
+        + void keyReleased(InputKey)
+        + void setScene(IScene)
+    }
+    Game --> "currentScene" IScene
+    Game --> "drawer" IDrawer
+
+    interface IAssetsManager<TImage> {
+        + TImage getAsset(String)
+    }
+}
+
+namespace me.foly.si.app {
+    class GameApplet
+    processing.core.PApplet <|-- GameApplet
+    GameApplet --> me.foly.si.core.Game
+
+    class ProcessingAssetsManager<processing.core.PImage> {
+        - HashMap<String,PImage> cache
+        + ProcessingAssetsManager(GameApplet)
+        + processing.core.PImage getAsset(String)
+    }
+    ProcessingAssetsManager --|> me.foly.si.core.IAssetsManager
+    processing.core.PImage <.. ProcessingAssetsManager
+    ProcessingAssetsManager <- GameApplet
+
+    class ProcessingDrawer
+    me.foly.si.core.IDrawer <|-- ProcessingDrawer
+    ProcessingAssetsManager <-- ProcessingDrawer
+}
+
+@enduml
