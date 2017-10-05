@@ -14,7 +14,7 @@ public class ProcessingAssetsManager implements IAssetsManager<PImage> {
     private PApplet applet;
     private HashMap<String, PImage> cache = new HashMap<>();
 
-    public ProcessingAssetsManager(PApplet applet) {
+    public ProcessingAssetsManager(GameApplet applet) {
         this.applet = applet;
 
         Path imagesPath = Paths.get(getClass().getResource("/images").getPath());

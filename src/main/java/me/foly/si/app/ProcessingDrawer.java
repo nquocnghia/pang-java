@@ -9,7 +9,7 @@ public class ProcessingDrawer implements IDrawer<PImage> {
     private PApplet applet;
     private IAssetsManager<PImage> assetsManager;
 
-    public ProcessingDrawer(PApplet applet, IAssetsManager<PImage> assetsManager) {
+    public ProcessingDrawer(GameApplet applet, IAssetsManager<PImage> assetsManager) {
         this.applet = applet;
         this.assetsManager = assetsManager;
     }

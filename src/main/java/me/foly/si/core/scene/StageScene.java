@@ -13,7 +13,7 @@ import static me.foly.si.core.SiConstants.CANVAS_HEIGHT;
 import static me.foly.si.core.SiConstants.CANVAS_WIDTH;
 
 public class StageScene implements IScene {
-    List<IShip> ships = new ArrayList<>();
+    private List<IShip> ships = new ArrayList<>();
     private Player player;
 
     public StageScene() {
