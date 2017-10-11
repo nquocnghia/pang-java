@@ -5,20 +5,21 @@ import me.foly.si.core.IDrawer;
 import me.foly.si.core.misc.InputKey;
 import me.foly.si.core.ship.IShip;
 import me.foly.si.core.ship.Player;
+import me.foly.si.core.ship.SimpleEnemy;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static me.foly.si.core.SiConstants.CANVAS_HEIGHT;
-import static me.foly.si.core.SiConstants.CANVAS_WIDTH;
-
 public class StageScene implements IScene {
     private List<IShip> ships = new ArrayList<>();
     private Player player;
+    private SimpleEnemy queen;
 
     public StageScene() {
         player = new Player();
+        queen = new SimpleEnemy();
         ships.add(player);
+        ships.add(queen);
     }
 
     @Override

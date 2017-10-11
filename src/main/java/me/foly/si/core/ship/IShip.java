@@ -26,4 +26,6 @@ public interface IShip {
     int getCenterX();
 
     int getCenterY();
+    
+    ShipType getType();
 }
