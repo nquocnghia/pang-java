@@ -6,4 +6,5 @@ public enum InputKey {
     LEFT,
     RIGHT,
     SPACE,
+    P
 }

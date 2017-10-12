@@ -18,7 +18,7 @@ public class GameApplet extends PApplet {
     public void setup() {
         frameRate(FPS);
         ProcessingAssetsManager assetsManager = new ProcessingAssetsManager(this);
-        game = new Game(new ProcessingDrawer(this, assetsManager));
+        game = new Game(assetsManager, new ProcessingDrawer(this, assetsManager));
     }
 
     @Override
@@ -54,6 +54,9 @@ public class GameApplet extends PApplet {
                 case ' ':
                     game.keyPressed(InputKey.SPACE);
                     break;
+                case 'p':
+                    game.keyPressed(InputKey.P);
+                    break;
             }
         }
     }
@@ -79,6 +82,9 @@ public class GameApplet extends PApplet {
             switch (event.getKey()) {
                 case ' ':
                     game.keyReleased(InputKey.SPACE);
+                    break;
+                case 'p':
+                    game.keyReleased(InputKey.P);
                     break;
             }
         }

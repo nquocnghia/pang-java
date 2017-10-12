@@ -2,15 +2,15 @@ package me.foly.si.core;
 
 import me.foly.si.core.misc.InputKey;
 import me.foly.si.core.scene.IScene;
-import me.foly.si.core.scene.StageScene;
+import me.foly.si.core.scene.LoadingScene;
 
 public class Game {
     private IScene currentScene;
     private IDrawer drawer;
 
-    public Game(IDrawer drawer) {
+    public Game(IAssetsManager assetsManager, IDrawer drawer) {
         this.drawer = drawer;
-        currentScene = new StageScene();
+        currentScene = new LoadingScene(assetsManager);
     }
 
     public void tick() {

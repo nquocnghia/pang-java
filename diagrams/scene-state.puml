@@ -1,0 +1,11 @@
+@startuml
+[*] --> LoadingScene
+LoadingScene --> MenuScene : preloading done
+MenuScene --> [*] : chosen Quit
+MenuScene -> StageScene : chosen New Game
+StageScene ---> PauseScene : pressed P
+PauseScene ---> StageScene : pressed P
+StageScene --> StageScene : won a stage
+StageScene --> GameOverScene : won all stages or hero died
+GameOverScene --> MenuScene : pressed any key
+@enduml
