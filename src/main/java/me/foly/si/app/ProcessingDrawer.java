@@ -15,6 +15,11 @@ public class ProcessingDrawer implements IDrawer<PImage> {
     }
 
     @Override
+    public void background(String imgSrc) {
+        applet.background(assetsManager.getAsset(imgSrc));
+    }
+
+    @Override
     public void background(float r, float g, float b) {
         applet.background(r, g, b);
     }

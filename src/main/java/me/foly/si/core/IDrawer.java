@@ -1,6 +1,8 @@
 package me.foly.si.core;
 
 public interface IDrawer<T> {
+    void background(String imgSrc);
+
     void background(float r, float g, float b);
 
     void rect(int left, int top, int width, int height);

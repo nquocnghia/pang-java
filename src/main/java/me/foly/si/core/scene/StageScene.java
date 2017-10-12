@@ -27,7 +27,7 @@ public class StageScene implements IScene {
     }
 
     public void draw(IDrawer drawer) {
-        drawer.image("bg.jpg", 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+        drawer.background("bg.jpg");
         ships.forEach(o -> o.draw(drawer));
     }
 
