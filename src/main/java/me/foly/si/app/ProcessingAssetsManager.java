@@ -17,13 +17,13 @@ public class ProcessingAssetsManager implements IAssetsManager<PImage> {
     public ProcessingAssetsManager(GameApplet applet) {
         this.applet = applet;
 
-        Path imagesPath = Paths.get(getClass().getResource("/images").getPath());
+        Path imagesPath = Paths.get(getClass().getResource("/assets/images").getPath());
         try {
             Files
                     .walk(imagesPath)
                     .filter(path -> Files.isRegularFile(path))
                     .map(path -> path.getFileName().toString())
-                    .forEach(imgSrc -> cache.put(imgSrc, applet.loadImage("images/" + imgSrc)));
+                    .forEach(imgSrc -> cache.put(imgSrc, applet.loadImage("assets/images/" + imgSrc)));
         } catch (IOException e) {
             e.printStackTrace();
         }
