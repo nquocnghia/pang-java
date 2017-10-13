@@ -6,14 +6,16 @@ import me.foly.si.core.misc.Size;
 public class ShipModel {
     private Position position;
     private Size size;
+    private ShipType type;
 
-    public ShipModel(Position position, Size size) {
+    public ShipModel(Position position, Size size, ShipType type) {
         this.position = position;
         this.size = size;
+        this.type = type;
     }
 
-    public ShipModel(int left, int top, int width, int height) {
-        this(new Position(left, top), new Size(width, height));
+    public ShipModel(int left, int top, int width, int height, ShipType type) {
+        this(new Position(left, top), new Size(width, height), type);
     }
 
     public int getLeft() {
@@ -94,5 +96,13 @@ public class ShipModel {
 
     public void setSize(Size size) {
         this.size = size;
+    }
+
+    public ShipType getType() {
+        return type;
+    }
+
+    public void setType(ShipType type) {
+        this.type = type;
     }
 }

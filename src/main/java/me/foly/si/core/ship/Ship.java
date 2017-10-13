@@ -6,8 +6,8 @@ public abstract class Ship implements IShip {
     private ShipModel model;
     private ShipView view;
 
-    public Ship(String imgSrc, int left, int top, int width, int height) {
-        this.model = new ShipModel(left, top, width, height);
+    public Ship(String imgSrc, int left, int top, int width, int height, ShipType type) {
+        this.model = new ShipModel(left, top, width, height, type);
         this.view = new ShipView(imgSrc, this.model);
     }
 
@@ -68,5 +68,10 @@ public abstract class Ship implements IShip {
     @Override
     public int getHeight() {
         return model.getHeight();
+    }
+
+    @Override
+    public ShipType getType() {
+        return model.getType();
     }
 }

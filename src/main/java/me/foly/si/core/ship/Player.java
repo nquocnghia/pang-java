@@ -10,7 +10,7 @@ public class Player extends Ship {
     private int deltaX = 0;
 
     public Player() {
-        super("player_ship.png", 0, 0, 64, 48);
+        super("player_ship.png", 0, 0, 64, 48, ShipType.PLAYER);
         getModel().setCenterX(GAME_CENTER_X);
         getModel().setBottom(GAME_BOTTOM);
     }
@@ -44,14 +44,9 @@ public class Player extends Ship {
             getModel().setRight(GAME_RIGHT);
     }
 
-	@Override
-	public ShipType getType() {
-		return ShipType.PLAYER;
-	}
-	
-	@Override
-	public int getBottom() {
-		return GAME_BOTTOM;
-	}
-    
+    @Override
+    public int getBottom() {
+        return GAME_BOTTOM;
+    }
+
 }

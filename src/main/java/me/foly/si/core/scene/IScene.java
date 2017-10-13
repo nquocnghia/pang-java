@@ -1,7 +1,7 @@
 package me.foly.si.core.scene;
 
-import me.foly.si.core.IDrawer;
 import me.foly.si.core.Game;
+import me.foly.si.core.IDrawer;
 import me.foly.si.core.misc.InputKey;
 
 public interface IScene {
