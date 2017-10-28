@@ -37,8 +37,7 @@ public class LoadingScene implements IScene {
     public void draw(IDrawer drawer) {
         double progress = this.assetsManager.getPreloadingProgress();
 
-        drawer.fill(0, 0, 0);
-        drawer.rect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+        drawer.background(0, 0, 0);
 
         drawer.nofill();
         drawer.stroke(255, 255, 255);

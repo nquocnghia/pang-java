@@ -5,10 +5,13 @@ import me.foly.si.core.IDrawer;
 public class ShipView {
     private String imgSrc;
     private ShipModel model;
-
     public ShipView(String imgSrc, ShipModel model) {
         this.imgSrc = imgSrc;
         this.model = model;
+    }
+
+    public String getImgSrc() {
+        return imgSrc;
     }
 
     public void draw(IDrawer drawer) {

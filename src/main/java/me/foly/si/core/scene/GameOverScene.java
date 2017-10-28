@@ -23,9 +23,7 @@ public class GameOverScene implements IScene {
 
     @Override
     public void draw(IDrawer drawer) {
-        drawer.fill(0, 0, 0);
-        drawer.rect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-
+        drawer.background(0, 0, 0);
         drawer.fill(255, 255, 255);
         drawer.textFont("future.ttf", 30);
         drawer.textAlign(IDrawer.TEXT_CENTER, IDrawer.TEXT_BOTTOM);

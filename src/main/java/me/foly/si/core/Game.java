@@ -5,11 +5,13 @@ import me.foly.si.core.scene.IScene;
 import me.foly.si.core.scene.LoadingScene;
 
 public class Game {
+    private final IAssetsManager assetsManager;
+    private final IDrawer drawer;
     private IScene currentScene;
-    private IDrawer drawer;
 
     public Game(IAssetsManager assetsManager, IDrawer drawer) {
         this.drawer = drawer;
+        this.assetsManager = assetsManager;
         currentScene = new LoadingScene(assetsManager);
     }
 
@@ -31,5 +33,17 @@ public class Game {
 
     public void setScene(IScene currentScene) {
         this.currentScene = currentScene;
+    }
+
+    public IScene getScene() {
+        return currentScene;
+    }
+
+    public IAssetsManager getAssetsManager() {
+        return assetsManager;
+    }
+
+    public IDrawer getDrawer() {
+        return drawer;
     }
 }

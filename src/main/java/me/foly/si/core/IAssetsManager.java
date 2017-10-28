@@ -8,4 +8,6 @@ public interface IAssetsManager<TImage,TFont> {
     boolean isPreloadingDone();
 
     double getPreloadingProgress();
+
+    int[] getContour(String imgSrc);
 }

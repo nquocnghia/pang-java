@@ -1,32 +1,29 @@
 package me.foly.si.core.ship;
 
-import static me.foly.si.core.SiConstants.*;
+import me.foly.si.core.event.EventShipDestroyed;
+import me.foly.si.core.ship.movestrategy.BounceMove;
 
 public class SimpleEnemy extends Ship {
 
     private static int DELTA = 3;
-    private int deltaX = DELTA;
 
     public SimpleEnemy(String imgSrc, int left, int top, int width, int height) {
-        super(imgSrc, left, top, width, height, ShipType.ENEMY);
-    }
-
-    @Override
-    public void tick() {
-        if (getLeft() <= 0 && deltaX < 0) {
-            getModel().setLeft(GAME_LEFT);
-            deltaX = DELTA;
-        } else if (getWidth() + getLeft() >= GAME_WIDTH && deltaX > 0) {
-            getModel().setRight(GAME_RIGHT);
-            deltaX = -DELTA;
-        }
-
-        getModel().getPosition().translateX(deltaX);
+        super(imgSrc, left, top, width, height, ShipType.ENEMY, new BounceMove(DELTA, 0));
     }
 
     @Override
     public ShipType getType() {
         return ShipType.ENEMY;
+    }
+
+    @Override
+    public boolean canCollideWith(IShip that) {
+        return that instanceof SimpleBullet && that.getType() == ShipType.PLAYER;
+    }
+
+    @Override
+    public void collidedWith(IShip that) {
+        this.notify(new EventShipDestroyed(this, this));
     }
 
 }

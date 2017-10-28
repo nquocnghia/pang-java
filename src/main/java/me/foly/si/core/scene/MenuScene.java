@@ -3,6 +3,7 @@ package me.foly.si.core.scene;
 import me.foly.si.core.Game;
 import me.foly.si.core.IDrawer;
 import me.foly.si.core.misc.InputKey;
+import me.foly.si.core.scene.stage.StageScene;
 
 import java.util.ArrayList;
 import java.util.Arrays;

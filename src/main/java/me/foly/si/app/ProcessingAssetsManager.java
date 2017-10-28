@@ -11,12 +11,15 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class ProcessingAssetsManager implements IAssetsManager<PImage, PFont>, Runnable {
     private PApplet applet;
     private ArrayList<String> sources = new ArrayList<>();
+
     private HashMap<String, PConstants> cache = new HashMap<>();
+    private HashMap<String, int[]> contours = new HashMap<>();
 
     public ProcessingAssetsManager(GameApplet applet) {
         this.applet = applet;
@@ -59,12 +62,28 @@ public class ProcessingAssetsManager implements IAssetsManager<PImage, PFont>, R
     @Override
     public void run() {
         sources.forEach(src -> {
-            cache.put(
-                    src.substring(4),
-                    src.startsWith("fnt:")
-                            ? applet.createFont("assets/" + src.substring(4), 20)
-                            : applet.loadImage("assets/images/" + src.substring(4))
-            );
+            String filename = src.substring(4);
+            if (src.startsWith("fnt:"))
+                cache.put(filename, applet.createFont("assets/" + filename, 20));
+            else {
+                PImage img = applet.loadImage("assets/images/" + filename);
+                cache.put(filename, img);
+
+                img.loadPixels();
+                contours.put(filename, Arrays.stream(img.pixels).map(color -> applet.alpha(color) == 0 ? 0 : 1).toArray());
+            }
+
+            // simulate io latency (TODO: remove)
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         });
+    }
+
+    @Override
+    public int[] getContour(String imgSrc) {
+        return contours.get(imgSrc);
     }
 }

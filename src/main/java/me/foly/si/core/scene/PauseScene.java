@@ -3,6 +3,7 @@ package me.foly.si.core.scene;
 import me.foly.si.core.Game;
 import me.foly.si.core.IDrawer;
 import me.foly.si.core.misc.InputKey;
+import me.foly.si.core.scene.stage.StageScene;
 
 import static me.foly.si.core.SiConstants.*;
 
@@ -20,9 +21,7 @@ public class PauseScene implements IScene {
 
     @Override
     public void draw(IDrawer drawer) {
-        drawer.fill(0, 0, 0);
-        drawer.rect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-
+        drawer.background(0, 0, 0);
         drawer.fill(255, 255, 255);
         drawer.textAlign(IDrawer.TEXT_CENTER, IDrawer.TEXT_CENTER);
         drawer.textFont("future.ttf", 30);
